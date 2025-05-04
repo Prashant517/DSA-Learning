@@ -33,23 +33,22 @@
 
 let inputArr = [2,4,5,9,8];
 let n = inputArr.length;
-
-// let sortedArr = inputArr.sort((a, b) => a - b);
-// console.log(sortedArr);
     
 let numbers = [];
 
 function findTargetValue(target){
+    // Step 1: Pair array values with their indices
     const indexedArr = inputArr.map((value, index) => ({ value, index }));
     // Step 2: Sort based on values
     indexedArr.sort((a, b) => a.value - b.value);
 
+    // Step 3: Two-pointer approach
     let l = 0;
     let r = n-1;
-
     while(l<r){
         const sum = indexedArr[l].value + indexedArr[r].value;
         if(sum === target){
+            // Retrieve and print original indices in ascending order
             const idx1 = indexedArr[l].index;
             const idx2 = indexedArr[r].index;
             numbers[0] = Math.min(idx1, idx2); //store min value index
