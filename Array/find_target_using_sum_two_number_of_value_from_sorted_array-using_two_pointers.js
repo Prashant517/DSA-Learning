@@ -15,11 +15,6 @@
 // Output format
 // Print two space separated indices(in increasing order) of the numbers which add up to the specified target.
 
-// Constraints
-// 2 <= Length of array <= 100000
-
-// 1 <= Range of values <= 1000000
-
 const inputArr = [2,3,5,7,11];
 let n = inputArr.length;
 let target = 9;
