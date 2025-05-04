@@ -22,49 +22,34 @@
 
 const inputArr = [2,3,5,7,11];
 let n = inputArr.length;
-const target = 9;
-let countLoops = 0;
-
-console.log('using Bruteforce Method');
-console.log('Example 1');
-
-let numbers = [];
-for (let i = 0; i <= n; i++){
-    countLoops++;
-    for (let j = 1; j <= n; j++){
-        countLoops++;
-        if(inputArr[i] + inputArr[j] == target){
-            numbers[0] = i;
-            numbers[1] = j;
-        }
-    }
-}
-
-console.log("count how many loops :" + countLoops);
-console.log("target : "+ target);
-console.log(numbers); //output (0,3)
-
+let target = 9;
 let countLoop = 0;
 
-console.log('Example 2')
+console.log('using Two pointer Method')
 
 function findTargetValue(target){
     let numbers = [];
-    for (let i = 0; i <= (n-2); i++){
+    let i = 0;
+    let j = n-1;
+    while(i<j){
         countLoop++;
-        for (let j = i+1; j <= (n-1); j++){
-            countLoop++;
-            if(inputArr[i]+inputArr[j] == target){
-                numbers[0] = i;
-                numbers[1] = j;
-            }
+        if(inputArr[i]+inputArr[j] == target){
+            numbers[0] = i;
+            numbers[1] = j;
+
+            console.log("count how many loops : "+ countLoop);
+            return numbers;
+        }
+        else if (inputArr[i]+inputArr[j] < target){
+            i++;
+        }
+        else{
+            j--;
         }
     }
-    console.log("count how many loops : "+ countLoop);
-    console.log("target : "+ target);
-    
-    return numbers;
+
+    return false;
 }
 
 
-console.log(findTargetValue(12)); //output (2,3)
+console.log(findTargetValue(12)); //output (0,1)
